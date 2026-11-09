@@ -12,30 +12,42 @@ namespace ClaseProducto
         public string? Nombre
         {
             get { return _nombre; }
-            set { Nombre = value; }
+            set { _nombre = value; }
         }
 
 
         public string? Codigo
         {
             get { return _codigo; }
-            set { Codigo = value; }
+            set { _codigo = value; }
         }
 
         public decimal? Precio
         {
             get { return _precio; }
-            set { Precio = value; }
+            set
+            {
+                if (value is null)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "El valor asignado es inválido!");
+                }
+                _precio = value;
+            }
         }
 
         public int? Cantidad
         {
             get { return _cantidad; }
-            set { Cantidad = value; }
+            set
+            {
+                if (value is null)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "El valor asignado es inválido!");
+                }
+                _cantidad = value;
+            }
         }
         // encapsulamiento
-
-
 
         // metodo constructor
         public Producto(string nombre, string codigo, decimal precio, int cantidad)
@@ -47,18 +59,18 @@ namespace ClaseProducto
         }
 
         // metodos
-        public void MostrarInformacion()
+        public void MostrarInformacion() // Muestra detalle del producto
         {
             Console.WriteLine("===== Información del Producto =====\n");
             Console.WriteLine($"Código producto:   {Codigo}");
             Console.WriteLine($"Nombre producto:   {Nombre}");
-            Console.WriteLine($"Precio producto:   $RD{Precio:2N}");
+            Console.WriteLine($"Precio producto:   $RD{Precio:N2}");
             Console.WriteLine($"Cantidad producto: {Cantidad}");
 
-            Console.WriteLine($"Total a pagar:     {CalcularValorTotal()}");
+            Console.WriteLine($"\nTotal a pagar:     $RD{CalcularValorTotal():N2}\n\n");
         }
 
-        public decimal? CalcularValorTotal()
+        public decimal? CalcularValorTotal() // Calcula el total de precio por cantidad
         {
             return Precio * Cantidad;
         }
