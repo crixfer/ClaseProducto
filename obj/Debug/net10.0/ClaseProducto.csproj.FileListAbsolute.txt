@@ -12,3 +12,4 @@ C:\Users\comma\OneDrive\Documents\CODING\Bootcamp C#\Producto\ClaseProducto\obj\
 C:\Users\comma\OneDrive\Documents\CODING\Bootcamp C#\Producto\ClaseProducto\obj\Debug\net10.0\ClaseProducto.pdb
 C:\Users\comma\OneDrive\Documents\CODING\Bootcamp C#\Producto\ClaseProducto\obj\Debug\net10.0\ClaseProducto.genruntimeconfig.cache
 C:\Users\comma\OneDrive\Documents\CODING\Bootcamp C#\Producto\ClaseProducto\obj\Debug\net10.0\ref\ClaseProducto.dll
+C:\Users\comma\OneDrive\Documents\CODING\Bootcamp C#\Producto\ClaseProducto\obj\Debug\net10.0\ClaseProducto.sourcelink.json
