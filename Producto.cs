@@ -1,48 +1,50 @@
+using System.Runtime.InteropServices;
+
 namespace ClaseProducto
 {
     class Producto
     {
         // encapsulamiento
-        private string? _nombre;
-        private string? _codigo;
-        private decimal? _precio;
-        private int? _cantidad;
+        private string _nombre = string.Empty;
+        private string _codigo = string.Empty;
+        private decimal _precio;
+        private int _cantidad;
 
 
-        public string? Nombre
+        public string Nombre
         {
             get { return _nombre; }
             set { _nombre = value; }
         }
 
 
-        public string? Codigo
+        public string Codigo
         {
             get { return _codigo; }
             set { _codigo = value; }
         }
 
-        public decimal? Precio
+        public decimal Precio
         {
             get { return _precio; }
             set
             {
-                if (value is null)
+                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "El valor asignado es inválido!");
+                    throw new ArgumentOutOfRangeException(nameof(value), "El precio del producto debe ser igual o mayor a cero!");
                 }
                 _precio = value;
             }
         }
 
-        public int? Cantidad
+        public int Cantidad
         {
             get { return _cantidad; }
             set
             {
-                if (value is null)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "El valor asignado es inválido!");
+                    throw new ArgumentOutOfRangeException(nameof(value), "La cantidad del producto debe ser igual o mayor a cero!");
                 }
                 _cantidad = value;
             }
