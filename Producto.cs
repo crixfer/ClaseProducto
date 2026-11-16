@@ -14,14 +14,27 @@ namespace ClaseProducto
         public string Nombre
         {
             get { return _nombre; }
-            set { _nombre = value; }
+            set 
+            { 
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value), "Debe ingresar nombre del producto que desea consultar!");
+                }
+
+            }
         }
 
 
         public string Codigo
         {
             get { return _codigo; }
-            set { _codigo = value; }
+            set 
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value), "Debe ingresar el código del producto que desea consultar!");
+                }
+            }
         }
 
         public decimal Precio
