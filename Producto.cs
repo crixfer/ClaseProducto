@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 
 namespace ClaseProducto
 {
-    class Producto
+    public class Producto
     {
         // encapsulamiento
         private string _nombre = string.Empty;
@@ -16,10 +16,12 @@ namespace ClaseProducto
             get { return _nombre; }
             set 
             { 
-                if (value == null)
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException(nameof(value), "Debe ingresar nombre del producto que desea consultar!");
                 }
+
+                _nombre = value;
 
             }
         }
@@ -30,10 +32,13 @@ namespace ClaseProducto
             get { return _codigo; }
             set 
             {
-                if (value == null)
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentNullException(nameof(value), "Debe ingresar el código del producto que desea consultar!");
                 }
+
+                _codigo = value;
+
             }
         }
 
@@ -85,7 +90,7 @@ namespace ClaseProducto
             Console.WriteLine($"\nTotal a pagar:     $RD{CalcularValorTotal():N2}\n\n");
         }
 
-        public decimal? CalcularValorTotal() // Calcula el total de precio por cantidad
+        public decimal CalcularValorTotal() // Calcula el total de precio por cantidad
         {
             return Precio * Cantidad;
         }
