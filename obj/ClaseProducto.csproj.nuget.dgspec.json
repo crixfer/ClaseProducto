@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/chris/Documents/Documents - Chris/CODE/C#/ClaseProducto/ClaseProducto.csproj": {}
+    "/home/crixfer/Projects/C#/ClaseProducto/ClaseProducto.csproj": {}
   },
   "projects": {
-    "/Users/chris/Documents/Documents - Chris/CODE/C#/ClaseProducto/ClaseProducto.csproj": {
+    "/home/crixfer/Projects/C#/ClaseProducto/ClaseProducto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chris/Documents/Documents - Chris/CODE/C#/ClaseProducto/ClaseProducto.csproj",
+        "projectUniqueName": "/home/crixfer/Projects/C#/ClaseProducto/ClaseProducto.csproj",
         "projectName": "ClaseProducto",
-        "projectPath": "/Users/chris/Documents/Documents - Chris/CODE/C#/ClaseProducto/ClaseProducto.csproj",
-        "packagesPath": "/Users/chris/.nuget/packages/",
-        "outputPath": "/Users/chris/Documents/Documents - Chris/CODE/C#/ClaseProducto/obj/",
+        "projectPath": "/home/crixfer/Projects/C#/ClaseProducto/ClaseProducto.csproj",
+        "packagesPath": "/home/crixfer/.nuget/packages/",
+        "outputPath": "/home/crixfer/Projects/C#/ClaseProducto/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chris/.nuget/NuGet/NuGet.Config"
+          "/home/crixfer/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -39,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "11.0.100"
       },
       "frameworks": {
         "net10.0": {
@@ -56,12 +56,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[10.0.15, 10.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[10.0.15, 10.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[10.0.15, 10.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.404/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/home/crixfer/.local/share/mise/dotnet-root/sdk/11.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

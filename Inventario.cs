@@ -1,15 +1,15 @@
 namespace ClaseProducto;
 
 
-class Inventario
+public class Inventario
 {
-    private List<Producto> inventario = new List<Producto>();
+    private static List<Producto> inventario = new List<Producto>();
 
     // metodos
 
     // METODO AGREGAR PRODUCTO
 
-    public string AgregarProducto(Producto producto)
+    public static string AgregarProducto(Producto producto)
     {
         if (!inventario.Any(p => p.Codigo == producto.Codigo))
         {
@@ -22,23 +22,24 @@ class Inventario
 
     // METODO BUSCAR POR CODIGO
 
-    public string BuscarPorCodigo(string codigo) // este metodo es solo la logica. Debo agregar los mensajes de instrucciones
+    public static string BuscarPorCodigo(string codigo)
     {
 
         foreach (Producto item in inventario)
         {
-            if (item.Codigo == codigo)
+            if (item.Codigo == codigo.ToUpper())
             {
-                return item;
+                return $"Producto: {item.Codigo} - {item.Nombre} - $RD{item.Precio}";
             }
 
         };
 
+            return "El producto que busca no existe.";
     }
 
     // METODO LISTAR PRODUCTOS
 
-    public string ListarProductos()
+    public static void ListarProductos()
     {
         Console.WriteLine("===== LISTA DE INVENTARIO =====");
         int orden = 1;
@@ -56,6 +57,15 @@ class Inventario
             item.MostrarInformacion();
             orden++;
         }
+
+        Console.WriteLine("Producto enlistado correctamente");
+    }
+
+    // METODO ACTUALIZAR PRECIOS
+
+    public static bool ActualizarPrecio(string codigo, decimal precio)
+    {
+       Producto productoEncontrado = inventario.FirstOrDefault(p => p.Codigo = codigo);
     }
 
 };

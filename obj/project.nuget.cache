@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "gSK9demeJR0=",
+  "dgSpecHash": "tthhBKOAHaw=",
   "success": true,
-  "projectFilePath": "/Users/chris/Documents/Documents - Chris/CODE/C#/ClaseProducto/ClaseProducto.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/crixfer/Projects/C#/ClaseProducto/ClaseProducto.csproj",
+  "expectedPackageFiles": [
+    "/home/crixfer/.nuget/packages/microsoft.netcore.app.ref/10.0.15/microsoft.netcore.app.ref.10.0.15.nupkg.sha512",
+    "/home/crixfer/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.15/microsoft.aspnetcore.app.ref.10.0.15.nupkg.sha512",
+    "/home/crixfer/.nuget/packages/microsoft.netcore.app.host.linux-x64/10.0.15/microsoft.netcore.app.host.linux-x64.10.0.15.nupkg.sha512"
+  ],
   "logs": []
 }
