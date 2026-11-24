@@ -1,73 +1,16 @@
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace ClaseProducto
 {
     public class Producto
     {
         // encapsulamiento
-        private string _nombre = string.Empty;
-        private string _codigo = string.Empty;
-        private decimal _precio;
-        private int _cantidad;
-
-
-        public string Nombre
-        {
-            get { return _nombre; }
-            set 
-            { 
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException(nameof(value), "Debe ingresar nombre del producto que desea consultar!");
-                }
-
-                _nombre = value;
-
-            }
-        }
-
-
-        public string Codigo
-        {
-            get { return _codigo; }
-            set 
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentNullException(nameof(value), "Debe ingresar el código del producto que desea consultar!");
-                }
-
-                _codigo = value;
-
-            }
-        }
-
-        public decimal Precio
-        {
-            get { return _precio; }
-            set
-            {
-                 if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "El precio del producto debe ser igual o mayor a cero!");
-                }
-                _precio = value;
-            }
-        }
-
-        public int Cantidad
-        {
-            get { return _cantidad; }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "La cantidad del producto debe ser igual o mayor a cero!");
-                }
-                _cantidad = value;
-            }
-        }
-        // encapsulamiento
+        public string Nombre = string.Empty;
+        public string Codigo = string.Empty;
+        public decimal Precio;
+        public int Cantidad;
+        // fin encapsulamiento
 
         // metodo constructor
         public Producto(string nombre, string codigo, decimal precio, int cantidad)
@@ -79,9 +22,10 @@ namespace ClaseProducto
         }
 
         // metodos
+
+        // METODO MOSTRAR INFORMACION
         public void MostrarInformacion() // Muestra detalle del producto
         {
-            Console.WriteLine("===== Información del Producto =====\n");
             Console.WriteLine($"Código producto:   {Codigo}");
             Console.WriteLine($"Nombre producto:   {Nombre}");
             Console.WriteLine($"Precio producto:   $RD{Precio:N2}");
@@ -90,9 +34,7 @@ namespace ClaseProducto
             Console.WriteLine($"\nTotal a pagar:     $RD{CalcularValorTotal():N2}\n\n");
         }
 
-        public decimal CalcularValorTotal() // Calcula el total de precio por cantidad
-        {
-            return Precio * Cantidad;
-        }
+        // METODO CALCULAR VALOR TOTAL
+        public decimal CalcularValorTotal() => Precio * Cantidad; // Calcula el total de precio por cantidad
     }
 }

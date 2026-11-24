@@ -1,11 +1,14 @@
 ﻿
+using System.Text.RegularExpressions;
+
 namespace ClaseProducto
-{
+
     class Program
     {
         static void Main(string[] args)
         {
-            int opcion = -1;
+            int opcion;
+            Producto nuevoProducto = new Producto("", "", 0m, 0); // objeto(instancia) de clase Producto
 
             do
             {
@@ -31,10 +34,12 @@ namespace ClaseProducto
 
                 Console.WriteLine(); // Salto de línea estético
 
+                
+                
                 switch (opcion)
                 {
                     case 1:
-                        Producto nuevoProducto = new Producto("", "", 0m, 0);
+                        Console.Clear();
                         Console.WriteLine("--- REGISTRAR PRODUCTO ---");
                         Console.WriteLine();
 
@@ -44,7 +49,16 @@ namespace ClaseProducto
 
                         Console.WriteLine("Ingrese el código del producto que desea registrar\n");
                         Console.Write("Código del producto: ");
-                        nuevoProducto.Codigo = Console.ReadLine()!;
+                        string nuevoCodigo = Console.ReadLine()!;
+
+                        if (Regex.IsMatch(nuevoCodigo, @"^\d{3}$"))
+                        {
+                            nuevoProducto.Codigo = nuevoCodigo;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Código inválido. Ingrese solo tres dígitos!");
+                        }
 
                         Console.WriteLine("Ingrese el precio del producto que desea registrar\n");
                         Console.Write("Precio del producto: ");
@@ -54,47 +68,55 @@ namespace ClaseProducto
                         Console.Write("Cantidad del producto: ");
                         nuevoProducto.Cantidad = int.Parse(Console.ReadLine()!);
 
-                        Inventario.AgregarProducto(nuevoProducto);
+                        Inventario.AgregarProducto(nuevoProducto); // metodo agregar
                         break;
 
                     case 2:
-                        Console.WriteLine("--- LISTAR PRODUCTOS ---");
+                        Console.Clear();
+                        Console.WriteLine("--- LISTA DE PRODUCTOS EN INVENTARIO---");
                         Inventario.ListarProductos();
                         break;
 
                     case 3:
+                        Console.Clear();
                         Console.WriteLine("--- BUSCAR PRODUCTO POR CÓDIGO ---");
                         Console.WriteLine();
                         Console.WriteLine("Ingrese el codigo que desea consultar");
                         Console.Write("Codigo: ");
-                        string codigoProducto = Console.ReadLine()!.ToUpper(); 
-                        Inventario.BuscarPorCodigo(codigoProducto);
+                        string codigoProducto = Console.ReadLine()!; 
+                        Console.WriteLine();
+                        Inventario.BuscarPorCodigo(codigoProducto); // metodo buscar codigo
                         break;
 
                     case 4:
+                        Console.Clear();
                         Console.WriteLine("--- ACTUALIZAR PRECIO ---\n");
                         // Aquí pides el código, el nuevo precio y lo actualizar
                         Console.WriteLine("Ingrese el codigo del producto para actualizar su precio");
                         Console.Write("Codigo: ");
-                        string codigoPrecio = Console.ReadLine()!.ToUpper();
-                        
-                        Producto nuevoPrecio = new Producto("", "", 0m, 0);
+                        string codigoPrecio = Console.ReadLine()!;
+                        Console.WriteLine();
 
-                        Inventario.BuscarPorCodigo(codigoPrecio);
+                        Inventario.BuscarPorCodigo(codigoPrecio); // metodo buscar codigo
 
                         Console.WriteLine("Actualice el precio del producto");
                         Console.Write("Nuevo Precio: ");
-                        nuevoPrecio.Precio = decimal.Parse(Console.ReadLine()!);
+                        
+                        decimal nuevoPrecio = decimal.Parse(Console.ReadLine()!);
 
-                        if (nuevoPrecio.Precio < 0)
+                        if (nuevoPrecio < 0)
                         {
-                            throw new ArgumentOutOfRangeException(nameof(nuevoPrecio.Precio), "El precio agregado debe ser mayor a cero!");
+                            throw new ArgumentOutOfRangeException(nameof(nuevoPrecio), "El precio agregado debe ser mayor a cero!");
                         }
                         else
                         {
                             Console.WriteLine("El precio ha sido actualizado correctamente");
-                        }
+                            Console.WriteLine($"----- DETALLE DE ACTUALIZACIÓN -----\n");
+                            Console.WriteLine($"Precio anterior: {nuevoProducto.Nombre} - RD${nuevoProducto.Precio:N2}\n");
+                            nuevoProducto.Precio = nuevoPrecio; // actualiza a nuevo precio
+                            Console.WriteLine($"Precio actualizado: {nuevoProducto.Nombre} - RD${nuevoProducto.Precio:N2}");
 
+                        }
 
                         break;
 

@@ -27,9 +27,9 @@ public class Inventario
 
         foreach (Producto item in inventario)
         {
-            if (item.Codigo == codigo.ToUpper())
+            if (item.Codigo == codigo)
             {
-                return $"Producto: {item.Codigo} - {item.Nombre} - $RD{item.Precio}";
+                item.MostrarInformacion();
             }
 
         };
@@ -38,39 +38,44 @@ public class Inventario
     }
 
     // METODO LISTAR PRODUCTOS
-
     public static void ListarProductos()
     {
-        Console.WriteLine("===== LISTA DE INVENTARIO =====");
         int orden = 1;
 
-        if (inventario.Count == 0)
+        if (inventario.Count == 0) // valida la existencia de productos
         {
-            Console.WriteLine("El inventario esta vacio");
+            Console.WriteLine("\nEl inventario esta vacio");
             return;
         }
 
-        // lista de productos
-        foreach (Producto item in inventario)
+        
+        foreach (Producto item in inventario) // crea la lista segun los productos
         {
-            Console.WriteLine($"----- Producto numero #{orden} -----");
-            item.MostrarInformacion();
+            Console.WriteLine($"----- Producto número #{orden} -----\n");
+            item.MostrarInformacion(); // metodo que muestra la informacion del producto
             orden++;
         }
 
-        Console.WriteLine("Producto enlistado correctamente");
+        Console.WriteLine("Producto enlistado correctamente.");
     }
 
     // METODO ACTUALIZAR PRECIOS
-
     public static bool ActualizarPrecio(string codigo, decimal precio)
     {
-       Producto productoEncontrado = inventario.FirstOrDefault(p => p.Codigo = codigo);
+       Producto? productoEncontrado = inventario.FirstOrDefault(p => p.Codigo == codigo);
+
+       if (productoEncontrado != null)
+        {
+            if (productoEncontrado.Precio != precio)
+            {
+                productoEncontrado.Precio = precio;
+                return true;
+            }
+        }
+        return false;
     }
 
 };
-
-// Lista para agregar objetos de clase producto
 
 
 
